@@ -53,9 +53,20 @@ class ExampleTest extends TestCase
 
 
         // Test for time zones
+        // Based off the answer in https://stackoverflow.com/questions/33035497/php-comparing-two-datetime-objects-with-different-timezones
+        // Use https://www.timeanddate.com/worldclock/converter-classic.html to convert time zones for testing
         $start = '2018-02-07 00:00:00 Australia/Melbourne';
         $end = '2018-02-07 21:00:00 Australia/Perth'; // This is same as 2018-02-08 00:00:00 Australia/Melbourne
         $this->assertEquals(1, $date->getDates($start, $end));
+
+
+        // Test a combination
+        $start = '2018-02-07 00:00:00 Australia/Melbourne';
+        $end = '2018-02-20 21:00:00 Australia/Perth'; // This is same as 2018-02-21 00:00:00 Australia/Melbourne
+        $this->assertEquals(14, $date->getDates($start, $end));
+        $this->assertEquals(14*24*60*60, $date->getDates($start, $end, 'seconds'));
+        $this->assertEquals(14*24*60, $date->getDates($start, $end, 'minutes'));
+        $this->assertEquals(14*24, $date->getDates($start, $end, 'hours'));
     }
 
     public function testWeeks()
