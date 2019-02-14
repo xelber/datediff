@@ -3,7 +3,7 @@
 ## Installing and running
 
 ### Requirement
-- PHP > 7.1
+- PHP >= 7.1.3
 - Tested in Linux(Homestead/Ubuntu) and Mac native php, should work in windows
 - Composer
 - Git
