@@ -41,7 +41,7 @@ class ExampleTest extends TestCase
 
         // Note the end date can be before the start date as well
         $start = '2019-02-10 00:00:00';
-        $end = '2018-02-09 00:00:00';
+        $end = '2019-02-09 00:00:00';
         $this->assertEquals(1, $date->getDates($start, $end));
 
         // With return type
@@ -50,6 +50,12 @@ class ExampleTest extends TestCase
         $this->assertEquals(2*24*60*60, $date->getDates($start, $end, 'seconds'));
         $this->assertEquals(2*24*60, $date->getDates($start, $end, 'minutes'));
         $this->assertEquals(2*24, $date->getDates($start, $end, 'hours'));
+
+
+        // Test for time zones
+        $start = '2018-02-07 00:00:00 Australia/Melbourne';
+        $end = '2018-02-07 21:00:00 Australia/Perth'; // This is same as 2018-02-08 00:00:00 Australia/Melbourne
+        $this->assertEquals(1, $date->getDates($start, $end));
     }
 
     public function testWeeks()
