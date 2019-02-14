@@ -6,6 +6,8 @@
 - PHP > 7.1
 - Tested in Linux(Homestead/Ubuntu) and Mac native php, should work in windows
 - Composer
+- Git
+- Github ssh key setup
 
 **Go to terminal and enter the following**
 ```
