@@ -16,4 +16,17 @@ Route::get('/', function () {
 });
 
 
-Route::get('/products', 'ProductController@index');
+Route::get('/test', function(){
+
+    $start = new DateTime( '2019-02-01' );
+    $end = new DateTime( '2019-02-10' );
+
+    $interval = new DateInterval('P1D');
+    $end = $end->modify( '+1 day' ); // Seems to be needed
+    $range = new DatePeriod($start, $interval ,$end);
+
+    foreach($range as $d){
+        echo $d->format('N'). "<br>";
+        echo $d->format("Y-m-d") . "<br>";
+    }
+});
