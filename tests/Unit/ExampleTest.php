@@ -100,5 +100,8 @@ class ExampleTest extends TestCase
         $start = '2019-02-12';
         $end = '2019-02-22';
         $this->assertEquals(9, $date->getWeekDays($start, $end));
+        $this->assertEquals(9*24*60*60, $date->getWeekDays($start, $end, 'seconds'));
+        $this->assertEquals(9*24*60, $date->getWeekDays($start, $end, 'minutes'));
+        $this->assertEquals(9*24, $date->getWeekDays($start, $end, 'hours'));
     }
 }

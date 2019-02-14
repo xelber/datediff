@@ -44,7 +44,7 @@ class Dates
     }
 
 
-    public function getWeekDays($start, $end)
+    public function getWeekDays($start, $end, $return_as = null)
     {
         $start = new \DateTime( $start );
         $end = new \DateTime( $end );
@@ -59,7 +59,9 @@ class Dates
             if ( $d->format('N') < 6 ) $week_days++; // 'N' gives the date number with respect to the week, 1 - Monday , 2 - Tuesday etc
         }
 
-        return $week_days;
+        if ( empty($return_as) ) return $week_days; // Early return to avoid nested ifs
+
+        return $this->convert($week_days, $return_as);
     }
 
     // $to can be - seconds, minutes, hours
