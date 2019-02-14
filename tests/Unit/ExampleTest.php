@@ -43,6 +43,12 @@ class ExampleTest extends TestCase
         $start = '2019-02-10 00:00:00';
         $end = '2018-02-09 00:00:00';
         $this->assertEquals(1, $date->getDates($start, $end));
+
+        $start = '2018-02-01 00:00:00';
+        $end = '2018-02-03 23:59:59';
+        $this->assertEquals(2*24*60*60, $date->getDates($start, $end, 'seconds'));
+        $this->assertEquals(2*24*60, $date->getDates($start, $end, 'minutes'));
+        $this->assertEquals(2*24, $date->getDates($start, $end, 'hours'));
     }
 
     public function testWeeks()
