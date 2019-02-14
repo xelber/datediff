@@ -26,8 +26,6 @@ class Dates
 
         $days = $interval->format("%d");
 
-        if ( empty($return_as) ) return $days; // Early return to avoid nested ifs
-
         return $this->convert($days, $return_as);
     }
 
@@ -58,8 +56,6 @@ class Dates
         {
             if ( $d->format('N') < 6 ) $week_days++; // 'N' gives the date number with respect to the week, 1 - Monday , 2 - Tuesday etc
         }
-
-        if ( empty($return_as) ) return $week_days; // Early return to avoid nested ifs
 
         return $this->convert($week_days, $return_as);
     }
