@@ -74,4 +74,17 @@ class ExampleTest extends TestCase
         $end = '2019-02-15';
         $this->assertEquals(2, $date->getWeeks($start, $end));
     }
+
+    public function testWeekDays()
+    {
+        $date = new \App\Dates();
+
+        $start = '2019-02-04';
+        $end = '2019-02-08';
+        $this->assertEquals(5, $date->getWeekDays($start, $end));
+
+        $start = '2019-02-12';
+        $end = '2019-02-22';
+        $this->assertEquals(9, $date->getWeekDays($start, $end));
+    }
 }

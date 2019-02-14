@@ -28,4 +28,23 @@ class Dates
 
         return floor($days/7);
     }
+
+
+    public function getWeekDays($start, $end)
+    {
+        $start = new \DateTime( $start );
+        $end = new \DateTime( $end );
+
+        $interval = new \DateInterval('P1D');
+        $end = $end->modify( '+1 day' ); // Seems to be needed
+        $range = new \DatePeriod($start, $interval ,$end);
+
+        $weekDays = 0;
+        foreach($range as $d)
+        {
+            if ( $d->format('N') < 6 ) $weekDays++; // 'N' gives the date number with respect to the week, 1 - Monday , 2 - Tuesday etc
+        }
+
+        return $weekDays;
+    }
 }
