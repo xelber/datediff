@@ -19,10 +19,10 @@ class Dates
      */
     public function getDates($start, $end, $return_as = null)
     {
-        $start_time = date_create($start);
-        $end_time = date_create($end);
+        $start_time = new \DateTime($start);
+        $end_time = new \DateTime($end);
 
-        $interval = date_diff($start_time, $end_time);
+        $interval = $start_time->diff($end_time);
 
         $days = $interval->format("%d");
 
