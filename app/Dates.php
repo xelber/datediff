@@ -11,7 +11,7 @@ namespace App;
 
 class Dates
 {
-    public  function getDates($start, $end)
+    public function getDates($start, $end)
     {
         $start_time = date_create($start);
         $end_time = date_create($end);
@@ -20,4 +20,7 @@ class Dates
 
         return $interval->format("%d");
     }
+
+
+
 }
