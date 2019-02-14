@@ -26,18 +26,21 @@ class Dates
 
         $days = $interval->format("%d");
 
-        if ( empty($return_as) ) return $days;
+        if ( empty($return_as) ) return $days; // Early return to avoid nested ifs
 
         return $this->convert($days, $return_as);
-
     }
 
 
-    public function getWeeks($start, $end)
+    public function getWeeks($start, $end, $return_as = null)
     {
         $days = $this->getDates($start, $end);
 
-        return floor($days/7);
+        $weeks = floor($days/7); // TODO - may be check if we should convert the return float to an int, any risks?
+
+        if ( empty($return_as) ) return $weeks; // Early return to avoid nested ifs
+
+        return $this->convert($weeks*7, $return_as);
     }
 
 
