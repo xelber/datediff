@@ -39,5 +39,27 @@ class ExampleTest extends TestCase
         $end = '2018-02-02 00:00:00';
 
         $this->assertEquals(0, $date->getDates($start, $end));
+
+
+        // Note the end date can be before the start date as well
+        $start = '2019-02-10 00:00:00';
+        $end = '2018-02-09 00:00:00';
+
+        $this->assertEquals(1, $date->getDates($start, $end));
+    }
+
+    public function testWeeks()
+    {
+        $date = new \App\Dates();
+
+        $start = '2019-02-01 00:00:01';
+        $end = '2019-02-02 00:00:00';
+
+        $this->assertEquals(0, $date->getWeeks($start, $end));
+
+        $start = '2019-02-01 00:00:00';
+        $end = '2019-02-08 00:00:00';
+
+        $this->assertEquals(1, $date->getWeeks($start, $end));
     }
 }

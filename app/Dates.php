@@ -22,5 +22,10 @@ class Dates
     }
 
 
+    public function getWeeks($start, $end)
+    {
+        $days = $this->getDates($start, $end);
 
+        return floor($days/7);
+    }
 }
